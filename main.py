@@ -1,16 +1,20 @@
 
 
-#NICHOLAS DERBY, JOHNATHAN MONDRAGON
-
-
+joketypes = ["robbers", "tanks", "pencils"]
 # make this performance task ready for submission
 # To give the user a fun experience hearing knock knock jokes
-# Knock-Knock Joke Program
+
+
+
+
+
+
+
+# Knock-Knock Joke Program (Refactored)
 # Includes lists, functions, parameters, abstraction, sequencing, selection, iteration
 
 # A list storing joke categories
 
-joketypes = ["robbers", "tanks", "pencils"]
 
 def tell_joke(category):
     if category == "robbers":
