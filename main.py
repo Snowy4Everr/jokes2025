@@ -1,6 +1,6 @@
 
 
-joketypes = ["robbers", "tanks", "pencils"]
+
 # make this performance task ready for submission
 # To give the user a fun experience hearing knock knock jokes
 
@@ -15,7 +15,7 @@ joketypes = ["robbers", "tanks", "pencils"]
 
 # A list storing joke categories
 
-
+joketypes = ["robbers", "tanks", "pencils"]
 def tell_joke(category):
     if category == "robbers":
         input("Knock Knock ")
