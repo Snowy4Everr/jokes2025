@@ -1,37 +1,62 @@
 
 
+#NICHOLAS DERBY, JOHNATHAN MONDRAGON
+
 
 # make this performance task ready for submission
 # To give the user a fun experience hearing knock knock jokes
+# Knock-Knock Joke Program
+# Includes lists, functions, parameters, abstraction, sequencing, selection, iteration
 
-joke = input("Do you want to hear a joke? ")
-if joke == "no":
-    print("Okay suit yourself!")
-while joke == "yes":
-    print("Great, Let's Play")
-    question = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
-    if question == "robbers":
+# A list storing joke categories
+
+joketypes = ["robbers", "tanks", "pencils"]
+
+def tell_joke(category):
+    if category == "robbers":
         input("Knock Knock ")
-        input("Calder")
-        print("Calder police - I've been robbed!")
-        joke = input("Do you want to hear another joke or are you finished? ")
-    elif question == "tanks":
+        input("Calder ")
+        print("Calder police — I've been robbed!")
+    elif category == "tanks":
         input("Knock Knock ")
         input("Tank ")
-        input("You are welcome! ")
-        joke = input("Do you want to hear another joke or are you finished? ")
-    elif question == "pencils":
+        print("You're welcome!")
+    elif category == "pencils":
         input("Knock Knock ")
         input("Broken pencil ")
-        input("Nevermind, it's pointless! ")
-        joke = input("Do you want to hear another joke or are you finished? ")
-if joke == "finished":
-    rate = int(input("Please rate our game 1-10! "))
-    final_score = int(rate * 10)
-    print(str(final_score) + " percent satisfaction rate")
-    friend = input("Would you recommend this game to a friend? ")
+        print("Nevermind — it's pointless!")
 
-    if friend == "yes" or friend == "maybe":
-        print("Thanks, we appreciate it. ")
+def ask_continue():
+    return input("Do you want to hear another joke? (yes/no) ").lower()
+
+def rate_game():
+    rating = int(input("Please rate our game 1–10: "))
+    score = rating * 10
+    print(str(score) + "% satisfaction rate")
+    recommend = input("Would you recommend this game to a friend? ").lower()
+    if recommend in ["yes", "maybe"]:
+        print("Thanks, we appreciate it!")
     else:
-        print("Sorry you did not enjoy it. ")
+        print("Sorry you did not enjoy it.")
+
+def main():
+    start = input("Do you want to hear a joke? (yes/no) ").lower()
+
+    if start == "no":
+        print("Okay, suit yourself!")
+        return
+
+    while start == "yes":
+        print("Great! Let's play.")
+        choice = input("Choose a joke: robbers, tanks, or pencils: ").lower()
+
+        if choice in joketypes:
+            tell_joke(choice)
+        else:
+            print("That is not a valid joke type.")
+
+        start = ask_continue()
+
+    rate_game()
+
+main()
