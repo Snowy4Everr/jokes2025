@@ -1,34 +1,28 @@
+jokes = {
+    "robbers": [
+        "Knock Knock",
+        "Calder",
+        "Calder police — I've been robbed!"
+    ],
+    "tanks": [
+        "Knock Knock",
+        "Tank",
+        "You're welcome!"
+    ],
+    "pencils": [
+        "Knock Knock",
+        "Broken pencil",
+        "Nevermind — it's pointless!"
+    ]
+}
 
-
-
-# make this performance task ready for submission
-# To give the user a fun experience hearing knock knock jokes
-
-
-
-
-
-
-
-# Knock-Knock Joke Program (Refactored)
-# Includes lists, functions, parameters, abstraction, sequencing, selection, iteration
-
-# A list storing joke categories
-
-joketypes = ["robbers", "tanks", "pencils"]
 def tell_joke(category):
-    if category == "robbers":
-        input("Knock Knock ")
-        input("Calder ")
-        print("Calder police — I've been robbed!")
-    elif category == "tanks":
-        input("Knock Knock ")
-        input("Tank ")
-        print("You're welcome!")
-    elif category == "pencils":
-        input("Knock Knock ")
-        input("Broken pencil ")
-        print("Nevermind — it's pointless!")
+    if category in jokes and len(jokes[category]) > 0:
+        for line in jokes[category]:
+            input(line + " ")
+        jokes.pop(category)  # modifies the list of available jokes
+    else:
+        print("That joke has already been told or does not exist.")
 
 def ask_continue():
     return input("Do you want to hear another joke? (yes/no) ").lower()
@@ -37,6 +31,7 @@ def rate_game():
     rating = int(input("Please rate our game 1–10: "))
     score = rating * 10
     print(str(score) + "% satisfaction rate")
+
     recommend = input("Would you recommend this game to a friend? ").lower()
     if recommend in ["yes", "maybe"]:
         print("Thanks, we appreciate it!")
@@ -50,17 +45,14 @@ def main():
         print("Okay, suit yourself!")
         return
 
-    while start == "yes":
-        print("Great! Let's play.")
-        choice = input("Choose a joke: robbers, tanks, or pencils: ").lower()
+    while start == "yes" and len(jokes) > 0:
+        print("Available jokes:", ", ".join(jokes.keys()))
+        choice = input("Choose a joke type: ").lower()
 
-        if choice in joketypes:
-            tell_joke(choice)
-        else:
-            print("That is not a valid joke type.")
-
+        tell_joke(choice)
         start = ask_continue()
 
+    print("No more jokes left!")
     rate_game()
 
 main()
